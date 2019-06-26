@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../css/test2.css" rel="stylesheet" type="text/css"/>
+    <title>Web存储-SH</title>
+</head>
+<body>
+    <div id="big">
+        <input type="text" placeholder="请输入想要查找的商品" id="text"/>
+        <input type="button" value="搜索" onclick="add()" id="addbutton"/>
+        <h5>最近搜索</h5>
+        <div id="div"></div>
+        <input type="button" value="x" onclick="delet()" id="deletbutton"/>
+    </div>
+</body>
+<script>
+    window.onload=function(){
+        for(var i = 0; i < localStorage.length ;i++){
+            div.innerHTML+="<p>"+localStorage.getItem(localStorage.key(i))+"</p>";
+        }
+    }
+    var div=document.getElementById("div");
+    function add(){
+        var tag=true;
+        var text=document.getElementById("text").value;
+        for(var i = 0; i < localStorage.length ;i++){
+            if(localStorage.getItem(localStorage.key(i)) == text)
+                tag=false;
+        }
+        if (tag) {
+            var key=new Date()
+            localStorage.setItem(key, text);
+            div.innerHTML+="<p>"+localStorage.getItem(key)+"</p>";
+        }
+        tag=true;
+    }
+    function delet(){
+        if(window.confirm("是否清除全部浏览记录？")){
+            localStorage.clear();
+            div.innerHTML="";
+        }
+    }
+</script>
+</html>

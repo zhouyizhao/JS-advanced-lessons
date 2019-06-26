@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .big{
+            width: 350px;
+            height: 400px;
+            box-shadow: 0px 0px 5px 5px #c0c5c0;
+            overflow: hidden;
+        }
+        img{
+            width: 350px;
+            height: 250px;
+            /* opacity: 1; */
+            transform: scale(1);
+            /* transition: opacity 500ms linear; */
+            transition: transform 500ms linear;
+        }
+        .yuan{
+            position:absolute;
+            top:20px;
+            left: 270px;
+            width: 40px;
+            height: 40px;
+            background-color: rgb(248, 125, 25);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .down{
+            float: left;
+            font-size:12px;
+            color: #c0c5c0;
+            margin: 8px;
+        }
+        .ph{
+            position:absolute;
+            top:220px;
+            width: 50px;
+            height: 30px;
+            background:#fb7449;
+            color: white;
+            text-align: center;
+            line-height: 28px;
+            font-size: 12px;
+            transition: top 500ms linear;
+        }
+        .p1{
+            margin: 20px 0 10px 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .p2{
+            margin-left: 10px;
+            font-size: 18px;
+            color: #fe7b4c;
+        }
+        .p3{
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+            color:rgb(128, 145, 146);
+            transform: scale(0);
+            transition: transform 500ms linear;
+            opacity: 0;
+            transition: opacity 500ms linear;
+        }
+        .litte{
+            position: absolute;
+            top:370px;
+            width: 350px;
+            height: 30px;
+        }
+        .big:hover .move .p3{
+            transform: scale(1);
+            opacity: 1;
+        }
+        .move{
+            position: absolute;
+            top:250px;
+            width: 350px;
+            height: 120px;
+            background: white;
+            transition: top 500ms linear;
+             
+        }
+        .big:hover .move{
+            top:150px;
+        }
+        .big:hover .ph{
+            top:120px;
+        }
+        .big:hover .img img{
+            transform: scale(1.5);
+            /* opacity: 0.6; */
+        }
+        .img{
+            width: 350px;
+            height: 250px;
+            overflow: hidden;
+        }
+        .img div{
+            width: 350px;
+            height: 250px;
+            position:absolute;
+            top:0px;
+        }
+        .big:hover .img div{
+            background-color:rgb(83, 82, 82);
+            opacity: 0.4;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="img">
+            <img src="images/zhanqiao.jpg" alt="zhanqiao.jpg"/>
+            <div></div>
+        </div>
+        <div class="yuan">
+            15<br/>5月
+        </div>
+        <div class="ph">照片</div>
+        <div class="move">
+            <p class="p1">青岛栈桥</p>
+            <p class="p2">国家AAAA级旅游景区</p>
+            <p class="p3">青岛栈桥是青岛海滨风景区的景点之一,是国务院于1982年首批公布的国家级风景名胜区。青岛栈桥位于游人如织的青岛中山路南端，桥身从海岸探入如弯月般的青岛湾深处。桥身供游人参观并在此停靠旅游船，由此乘船可看海上青岛。</p>
+        </div>
+        <div class="litte">
+            <p class="down">10分钟前</p>
+            <p class="down">123评论</p>
+        </div>
+    </div>
+</body>
+</html>

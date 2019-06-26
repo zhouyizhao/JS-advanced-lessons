@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>刮奖效果-SH</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            border: 1px solid red;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"  width="230" height="70">
+    </canvas>
+</body>
+<script>
+    var canvas=document.getElementById("canvas");
+    var context=canvas.getContext("2d");
+
+    /*Q:在canvas中绘制随机奖项的文字将会导致刮刮卡刮开后无法显示文字？！
+    //设置随机奖项
+    var arr=["1谢谢惠顾","2一等奖","3谢谢惠顾","4二等奖","5谢谢惠顾","6三等奖","7谢谢惠顾","8三等奖","9谢谢惠顾","0三等奖"];
+    var rd=Math.floor(Math.random()*10);
+
+    //绘制奖项文字
+    context.font = "bold 35px 宋体";
+    context.fillStyle = "#000";
+    context.fillText(arr[random],30,50);
+    */
+
+    //设置随机奖项-以背景图形式
+    var arr=["images/cake.jpg","images/curved-road.png","images/music.png","images/snowflake.png"];
+    var rd=Math.floor(Math.random()*4);
+    canvas.style.backgroundImage = 'url("'+arr[rd]+'")';
+
+    //绘制刮卡覆盖涂层-遮罩层
+    context.fillStyle = '#aaa';
+    context.fillRect(0,0,230,70);
+    context.globalCompositeOperation = 'destination-out';
+
+    //绘制刮卡图层
+
+    //刮开图层-封装函数
+    function open(e){
+        context.beginPath();
+        context.fillStyle = 'white';
+        context.arc(e.clientX,e.clientY,15,0,2*Math.PI);
+        context.fill();
+    }
+
+    //刮开面积到达85%，自动去除遮罩层-封装函数
+    function upup(){
+        var imgData = context.getImageData(0,0,230,70);
+	    var arrp = [];
+        for(var i=0;i<imgData.data.length; i+=4){
+	        if(imgData.data[i+3]<128) {
+                //将透明度低的像素放入向数组arrp中
+			    arrp.push(imgData.data[i+3]);
+		    }
+	    }
+        per=(arrp.length/(imgData.data.length/4)*100).toFixed(2);
+	    //console.log(per+'%');
+		if(per>85) {
+			context.clearRect(0,0,230,70);
+		}
+    }
+
+    //鼠标单击时-刮开
+    canvas.onclick=function(e){
+        open(e);
+        upup();
+    }
+
+    //鼠标拖动时-刮开
+    canvas.onmousedown=function(e){
+        canvas.onmousemove=function(e){
+            open(e);
+        };
+        canvas.onmouseup=function(){
+            canvas.onmousemove=null;
+
+        };
+    }
+</script>
+</html>

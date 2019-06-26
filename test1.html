@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单-SH</title>
+    <link href="../css/test1.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <form id="big" action="#" method="get">
+        <h1>毕业生信息</h1>
+        <fieldset id="fie1"> 
+            <legend id="leg">学生信息</legend>
+            姓 名 <input type="text" name="name" placeholder="请输入姓名" autofocus/><span> *</span><br/> 
+            学 号 <input type="number" name="number" placeholder="请输入学号"/><span> *</span><br/>
+            手 机 <input type="number" name="phone" placeholder="请输入手机号"/><span> *</span><br/>
+            邮 箱 <input type="email" name="email" placeholder="请输入邮箱地址"/><span> *</span><br/>
+        </fieldset>
+        <fieldset id="fie2">
+            <legend id="leg">录取情况</legend>
+            录取学校 <input type="search" list="names" name="schools"/><br/>
+            <datalist id="names">
+                    <option></option>
+                    <option>河北师范大学</option>
+                    <option>河北科技大学</option>
+                    <option>河北地质大学</option>
+                    <option>河北工业大学</option>
+                    <option>河北医科大学</option>
+                </datalist>
+            入学成绩 <input type="number" name="grade"/><br/>
+            入学时间 <input type="date" name="time"/><br/>
+        </fieldset>
+        <input type="submit" id="submit"/>
+    </form>
+    <script src="../js/test1.js"></script>
+</body>
+</html>
